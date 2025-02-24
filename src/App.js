@@ -2,7 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Public from "./components/Public";
-import Login from './components/Login'
+import Login from './features/auth/Login'
 import DashLayout from "./components/DashLayout";
 
 function App() {
