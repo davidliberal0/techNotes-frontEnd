@@ -39,3 +39,20 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 });
 
 export const { useGetUsersQuery } = usersApiSlice;
+
+export const selectUsersResult = usersApiSlice.endpoints.getUsers.select();
+
+const selectUsersData = createSelector(
+  selectUsersResult,
+  (userResult) => selectUsersResult.data
+);
+
+// getSelectors creates these selectors and we rename them with aliases using
+// destructuring
+export const {
+  selectAll: selectAllUsers,
+  selectById: selectUsersById,
+  selectIds: selectUsersIds,
+} = usersAdapter.getSelectors((state) => {
+  selectUsersData(state) ?? initialState;
+});
